@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\providerAppIAL\providerAppIAL.csproj" />
+    <ProjectReference Include="..\providerAppModel\providerAppModel.csproj" />
+  </ItemGroup>
+
+</Project>

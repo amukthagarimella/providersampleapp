@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:providerSampleApp"
+             x:Class="providerSampleApp.MainPage"
+             Title="Sign In">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Spacing="20" Padding="20">
+            <Label x:Name="Test"></Label>
+            <Label Text="Username" TextColor="DodgerBlue" ></Label>
+            <Entry x:Name="Username"></Entry>
+            <Label Text="Password" TextColor="DodgerBlue"></Label>
+            <Entry x:Name="Password"></Entry>
+            <Button x:Name="SignIn" Text="Sign In" HorizontalOptions="Center" Clicked="Button_Clicked" BackgroundColor="DodgerBlue" TextColor="White"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
