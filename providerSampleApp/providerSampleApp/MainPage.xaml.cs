@@ -60,13 +60,13 @@ namespace providerSampleApp
         public static List<User> GetProviders()
         {
             var practiceInfo = PracticeBL.GetPracticeUrls("CC_DEMO");
-            Harvester.Common.Config.BaseAddress = practiceInfo.InternetUrl + "harvester//";
-            Harvester.Common.GlobalVariables.ActiveClinic = new Harvester.Model.Clinic()
+            Config.BaseAddress = practiceInfo.InternetUrl + "harvester//";
+            GlobalVariables.ActiveClinic = new Clinic()
             {
                 ClinicName = "Default",
                 ClinicId = "1"
             };
-            return Harvester.BL.PracticeBL.GetUsers();
+            return PracticeBL.GetUsers();
         }
     }
 }

@@ -158,6 +158,18 @@
   <ItemGroup>
     <BundleResource Include="Resources\search2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\directory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\metrics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\postop.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

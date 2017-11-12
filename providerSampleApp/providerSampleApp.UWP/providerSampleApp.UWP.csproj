@@ -111,7 +111,11 @@
     <None Include="providerSampleApp.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\directory.png" />
     <Content Include="Assets\ic_search_black_24dp_2x.png" />
+    <Content Include="Assets\metrics.png" />
+    <Content Include="Assets\people.png" />
+    <Content Include="Assets\postop.png" />
     <Content Include="Assets\rightarrow %282%29.png" />
     <Content Include="Assets\rightarrow.png" />
     <Content Include="Assets\search.png" />
