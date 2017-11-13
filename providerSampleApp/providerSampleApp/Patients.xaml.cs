@@ -18,9 +18,9 @@ namespace providerSampleApp
         public Patients()
         {
             InitializeComponent();
-
+            var patientDetailList = patientList.Patients;
             PatientView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
-            PatientView.BindingContext = patientList;
+            PatientView.BindingContext = patientDetailList;
 
 
         }

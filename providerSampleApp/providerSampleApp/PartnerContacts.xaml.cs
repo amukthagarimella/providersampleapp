@@ -3,33 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Harvester.Model;
-using Harvester.BL;
-using Harvester.Common;
+using ProviderAppData;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace providerSampleApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TeamDirectory : ContentPage
+    public partial class PartnerContacts : ContentPage
     {
-        List<User> providerList = MainPage.GetProviders();
-        public TeamDirectory()
+        public static ObservableCollection<PartnerContactInfo> partnerContactsList = new ObservableCollection<PartnerContactInfo>();
+       // public static List<PartnerContactInfo> partnerContactsList = new List<PartnerContactInfo>();
+        public PartnerContacts()
         {
             InitializeComponent();
-            foreach (var i in providerList)
-            {
-                //var providerImg = MainPage.GetProviderImage(i.UserImageID,);
-            }
-            ProviderView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
-            ProviderView.BindingContext = providerList;
+            PartnerContactView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
+            PartnerContactView.BindingContext = partnerContactsList;
+            
         }
 
-             
-        async void ProviderView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {   
-            var itemSelected = (User)e.SelectedItem;
+        async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddPartnerContact());
+            PartnerContactView.BindingContext = partnerContactsList;
+        }
+        async void PartnerContactView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var itemSelected = (PartnerContactInfo)e.SelectedItem;
             Label Name = new Label()
             {
                 FontAttributes = FontAttributes.Bold,
@@ -41,18 +42,28 @@ namespace providerSampleApp
                 FontSize = 15,
                 VerticalOptions = LayoutOptions.Center
             };
-            foreach (var i in providerList)
+            Label contactNo = new Label()
+            {
+                FontAttributes = FontAttributes.Bold,
+            };
+            Label contactEmail = new Label()
+            {
+                FontAttributes = FontAttributes.Bold,
+            };
+            foreach (var i in partnerContactsList)
             {
                 if (itemSelected.FirstName.ToString() == i.FirstName.ToString())
                 {
-                    Name.Text = i.FirstName +" "+ i.LastName;
-                    displayName.Text = i.DisplayName;
+                    Name.Text = i.FirstName + " " + i.LastName;
+                    displayName.Text = i.ProviderName;
+                    contactNo.Text = i.ContactNo;
+                    contactEmail.Text = i.ContactEmail;
                 }
             }
 
             ContentPage page = new ContentPage()
             {
-                   Title="Provider Details"
+                Title = "Partner Contact Details"
             };
             Button okButton = new Button()
             {
@@ -70,9 +81,10 @@ namespace providerSampleApp
             };
             stack.Children.Add(Name);
             stack.Children.Add(displayName);
+            stack.Children.Add(contactNo);
+            stack.Children.Add(contactEmail);
             stack.Children.Add(okButton);
             page.Content = stack;
-
             await Navigation.PushModalAsync(page, false);
         }
 
@@ -85,13 +97,14 @@ namespace providerSampleApp
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
-                ProviderView.ItemsSource = providerList;
+                PartnerContactView.ItemsSource = partnerContactsList;
             }
 
             else
-            {   
-                ProviderView.ItemsSource = providerList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower()));
+            {
+                PartnerContactView.ItemsSource = partnerContactsList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower())|| x.LastName.ToLower().StartsWith(e.NewTextValue.ToLower()));
             }
         }
+
     }
 }

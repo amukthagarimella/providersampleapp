@@ -3,28 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ProviderAppData;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace providerSampleApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class AddPartnerContact : ContentPage
     {
-        public Page1()
+        public AddPartnerContact()
         {
             InitializeComponent();
         }
 
         async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DirectoryandPartnerContacts());
-        }
+            PartnerContactInfo partnerContact = new PartnerContactInfo(firstName.Text, lastName.Text, providerName.Text, contactNo.Text, emailId.Text);
+            PartnerContacts.partnerContactsList.Add(partnerContact);
+            await Navigation.PopAsync();
 
-        async void Button_Clicked_1(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Patients());
         }
     }
 }

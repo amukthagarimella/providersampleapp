@@ -7,6 +7,10 @@ using Xamarin.Forms;
 using Harvester.Model;
 using Harvester.Common;
 using Harvester.BL;
+using System.Threading;
+using System.IO;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace providerSampleApp
 {
@@ -67,6 +71,27 @@ namespace providerSampleApp
                 ClinicId = "1"
             };
             return PracticeBL.GetUsers();
+        }
+        public ProviderImage GetProviderImage(string providerId, CancellationToken ct)
+        {
+            try
+            {
+                var request = WebRequest.CreateHttp(String.Concat(Config.BaseAddress, "api/providers/image/", GlobalVariables.ActiveClinic.ClinicId, "/", providerId));
+                using (ct.Register(() => request.Abort(), false))
+                {
+                    var response = request.GetResponseAsync().Result;
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var content = reader.ReadToEnd();
+                        Util.ValidateResponse(content);
+                        return new ProviderImage() { Picture = JsonConvert.DeserializeObject<string>(content) };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw Util.HandleAPIException(ex, "GetProviderImage");
+            }
         }
     }
 }

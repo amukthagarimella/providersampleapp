@@ -36,14 +36,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddPartnerContact.xaml.cs">
+      <DependentUpon>AddPartnerContact.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryandPartnerContacts.xaml.cs">
+      <DependentUpon>DirectoryandPartnerContacts.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerContacts.xaml.cs">
+      <DependentUpon>PartnerContacts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Patients.xaml.cs">
       <DependentUpon>Patients.xaml</DependentUpon>
@@ -79,6 +88,10 @@
       <Project>{d6b439ca-8cd7-4df1-bb27-fa5d19cbd67a}</Project>
       <Name>ProviderAppCommonForms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ProviderAppData\ProviderAppData.csproj">
+      <Project>{5c501b04-6835-4221-a153-72e57c482b6b}</Project>
+      <Name>ProviderAppData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ProviderAppModelForms\ProviderAppModelForms.csproj">
       <Project>{f7ce9f52-f07d-497c-8d7e-0fb5f8365f1a}</Project>
       <Name>ProviderAppModelForms</Name>
@@ -91,6 +104,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.4.0.38779\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -106,6 +122,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Patients.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DirectoryandPartnerContacts.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PartnerContacts.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddPartnerContact.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

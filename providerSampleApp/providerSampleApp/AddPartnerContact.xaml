@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="providerSampleApp.AddPartnerContact"
+             Title="Add Contact Detials">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Label Text="First Name"/>
+            <Entry x:Name="firstName"/>
+            <Label Text="Last Name"/>
+            <Entry x:Name="lastName"/>
+            <Label Text="Provider Name"/>
+            <Entry x:Name="providerName"/>
+            <Label Text="Contact No"/>
+            <Entry x:Name="contactNo"/>
+            <Label Text="Email Id"/>
+            <Entry x:Name="emailId"/>
+            <Button Text="Add" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked"/>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
