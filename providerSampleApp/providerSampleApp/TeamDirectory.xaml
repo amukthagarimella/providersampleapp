@@ -9,7 +9,56 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="searchbar" Placeholder="Enter provider name" IsVisible="False"  TextChanged="SearchBar_TextChanged"></SearchBar>
-            <ListView x:Name="ProviderView" ItemSelected="ProviderView_ItemSelected">
+            <!--<Label Text="{Binding providerImage}"/>>-->
+            <ListView x:Name="ImageView" ItemSelected="ProviderView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding FirstName}"></Label>
+                                    <Label Text="{Binding LastName}"></Label>
+                                    <Image Source="rightarrow.png"></Image>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Dentists" Font="Bold, 10" />
+            <ListView x:Name="DentistView" ItemSelected="ProviderView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding FirstName}"></Label>
+                                    <Label Text="{Binding LastName}"></Label>
+                                    <Image Source="rightarrow.png"></Image>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Hygienists" Font="Bold, 10" />
+            <ListView x:Name="HygienistView" ItemSelected="ProviderView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding FirstName}"></Label>
+                                    <Label Text="{Binding LastName}"></Label>
+                                    <Image Source="rightarrow.png"></Image>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Others" Font="Bold, 10" />
+            <ListView x:Name="OthersView" ItemSelected="ProviderView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

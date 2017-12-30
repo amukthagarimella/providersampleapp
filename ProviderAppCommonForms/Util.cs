@@ -69,7 +69,7 @@ namespace Harvester.Common
         public static string TrimWithNullHandling(this string input)
         {
             if (string.IsNullOrEmpty(input))
-                return string.Empty;
+                return "N/A";
             else
                 return input.Trim();
         }
@@ -111,6 +111,7 @@ namespace Harvester.Common
                 return JsonConvert.DeserializeObject<T>(content);
             }
         }
+        
 	}
 }
 

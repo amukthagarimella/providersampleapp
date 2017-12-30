@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>providerSampleApp.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>38AE6E1D0A52C8E88602EE6D59CCE29C901FAE57</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>EA037E19CEAD26141CD9BE9F3BC6814BB7CB0B11</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>

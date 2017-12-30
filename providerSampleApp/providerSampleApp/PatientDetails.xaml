@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="providerSampleApp.PatientDetails"
+             Title="Patient Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label  Text="Patient" Font="Bold, 20" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="First Name"/>
+                    <Label x:Name="firstnamevalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Last Name"/>
+                    <Label x:Name="lastNamevalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gender"/>
+                    <Label x:Name="gendervalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Age"/>
+                    <Label x:Name="agevalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Birthday"/>
+                    <Label x:Name="birthdayvalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <Label  Text="Contact Information" Font="Bold, 20" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Resp. Party"/>
+                    <Label x:Name="respPartyValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Work Phone"/>
+                    <Label x:Name="workphonevalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Cell Phone"/>
+                    <Label x:Name="cellphoneValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Home Phone"/>
+                    <Label x:Name="homephonevalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Email"/>
+                    <Label x:Name="emailValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Home Address"/>
+                    <Label x:Name="homeaddressvalue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <Label  Text="Calendar" Font="Bold, 20" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Last Bitewing"/>
+                    <Label x:Name="lastBitewingValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Last FMX"/>
+                    <Label x:Name="lastfmxValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Last Panoramic"/>
+                    <Label x:Name="lastpanoramicValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Last Perio Chart"/>
+                    <Label x:Name="lastperiochartValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <Label  Text="Preferred Providers" Font="Bold, 20" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Doctor"/>
+                    <Label x:Name="doctorValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Hygenist"/>
+                    <Label x:Name="hygenistValue" TextColor="DodgerBlue"/>
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>
+ 

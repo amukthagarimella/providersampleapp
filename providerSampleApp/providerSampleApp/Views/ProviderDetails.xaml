@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="providerSampleApp.Views.ProviderDetails"
+             Title="Provider Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Center">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Provider Id"/>
+                    <Label x:Name="providerId"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name"/>
+                    <Label x:Name="name"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Gender"/>
+                    <Label x:Name="gender"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Provider Type"/>
+                    <Label x:Name="providertype"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

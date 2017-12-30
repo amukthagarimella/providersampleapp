@@ -16,6 +16,7 @@ namespace providerSampleApp
 {
     public partial class MainPage : ContentPage
     {
+        public static string currentUserID { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace providerSampleApp
                             Password = string.Empty,
                         });
 
-                        var currentUserID = Username.Text;
+                        currentUserID = Username.Text;
                         Test.IsVisible = Convert.ToBoolean(false);
                         await Navigation.PushAsync(new Page1());
                     }

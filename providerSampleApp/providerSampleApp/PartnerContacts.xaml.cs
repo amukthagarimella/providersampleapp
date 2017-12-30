@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProviderAppData;
+using providerSampleApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
@@ -14,10 +14,11 @@ namespace providerSampleApp
     public partial class PartnerContacts : ContentPage
     {
         public static ObservableCollection<PartnerContactInfo> partnerContactsList = new ObservableCollection<PartnerContactInfo>();
-       // public static List<PartnerContactInfo> partnerContactsList = new List<PartnerContactInfo>();
+        //public static List<PartnerContactInfo> partnerContactsList = new List<PartnerContactInfo>();
         public PartnerContacts()
         {
             InitializeComponent();
+            partnerContactsList=PartnerContactService.GetPartnerContacts();
             PartnerContactView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
             PartnerContactView.BindingContext = partnerContactsList;
             
@@ -26,6 +27,7 @@ namespace providerSampleApp
         async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddPartnerContact());
+            partnerContactsList=PartnerContactService.GetPartnerContacts();
             PartnerContactView.BindingContext = partnerContactsList;
         }
         async void PartnerContactView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

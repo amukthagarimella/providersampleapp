@@ -6,74 +6,68 @@ using System.Threading.Tasks;
 using Harvester.Model;
 using Harvester.BL;
 using Harvester.Common;
+using providerSampleApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using providerSampleApp.Services;
+using System.Threading;
+using providerSampleApp.Models;
 
 namespace providerSampleApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TeamDirectory : ContentPage
     {
-        List<User> providerList = MainPage.GetProviders();
+        List<Provider> providerList = ProviderService.GetProviders();
+        List<Provider> DentistList = new List<Provider>();
+        List<Provider> HygienistList = new List<Provider>();
+        List<Provider> OtherList = new List<Provider>();
+        List<ProviderImageList> ImagesList = new List<ProviderImageList>();
+
         public TeamDirectory()
         {
             InitializeComponent();
-            foreach (var i in providerList)
-            {
-                //var providerImg = MainPage.GetProviderImage(i.UserImageID,);
-            }
-            ProviderView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
-            ProviderView.BindingContext = providerList;
-        }
+            CancellationTokenSource source = new CancellationTokenSource();
+            CancellationToken token = source.Token;
 
-             
-        async void ProviderView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {   
-            var itemSelected = (User)e.SelectedItem;
-            Label Name = new Label()
-            {
-                FontAttributes = FontAttributes.Bold,
-                FontSize = 25
-            };
-            Label displayName = new Label()
-            {
-                FontAttributes = FontAttributes.Bold,
-                FontSize = 15,
-                VerticalOptions = LayoutOptions.Center
-            };
             foreach (var i in providerList)
             {
-                if (itemSelected.FirstName.ToString() == i.FirstName.ToString())
+                foreach(var j in ImagesList)
                 {
-                    Name.Text = i.FirstName +" "+ i.LastName;
-                    displayName.Text = i.DisplayName;
+                    j.providerImage = ProviderService.GetProviderImage(i.ProviderID, token);
+                }
+
+                if (i.ProviderType == Provider.Type.Dentist)
+                {
+                    DentistList.Add(i);
+                }
+                else if (i.ProviderType == Provider.Type.Hygienist)
+                {
+                    HygienistList.Add(i);
+                }
+                else
+                {
+                    OtherList.Add(i);
                 }
             }
 
-            ContentPage page = new ContentPage()
-            {
-                   Title="Provider Details"
-            };
-            Button okButton = new Button()
-            {
-                Text = "OK",
-            };
-            okButton.Clicked += ((o2, e2) =>
-            {
-                this.Navigation.PopModalAsync();
-            });
-            StackLayout stack = new StackLayout()
-            {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Padding = new Thickness(20, 50, 20, 20)
-            };
-            stack.Children.Add(Name);
-            stack.Children.Add(displayName);
-            stack.Children.Add(okButton);
-            page.Content = stack;
+            ImageView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
+            ImageView.BindingContext = ImagesList;
+            DentistView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
+            DentistView.BindingContext = DentistList;
+            HygienistView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
+            HygienistView.BindingContext = HygienistList;
+            OthersView.SetBinding(ListView.ItemsSourceProperty, new Binding("."));
+            OthersView.BindingContext = OtherList;
 
-            await Navigation.PushModalAsync(page, false);
+        }
+
+
+        async void ProviderView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var itemSelected = (Provider)e.SelectedItem;
+
+            await Navigation.PushAsync(new ProviderDetails(itemSelected));
         }
 
         private void ToolbarItem_Activated(object sender, EventArgs e)
@@ -85,13 +79,18 @@ namespace providerSampleApp
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
-                ProviderView.ItemsSource = providerList;
+                DentistView.ItemsSource = DentistList;
+                HygienistView.ItemsSource = HygienistList;
+                OthersView.ItemsSource = OtherList;
             }
 
             else
-            {   
-                ProviderView.ItemsSource = providerList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower()));
+            {
+                DentistView.ItemsSource = DentistList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower()));
+                HygienistView.ItemsSource = HygienistList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower()));
+                OthersView.ItemsSource = OtherList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower()));
             }
         }
     }
+   
 }

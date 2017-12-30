@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="searchbar" Placeholder="Enter patient name" IsVisible="False"  TextChanged="SearchBar_TextChanged"></SearchBar>
-            <ListView x:Name="PatientView">
+            <ListView x:Name="PatientView" ItemSelected="PatientView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

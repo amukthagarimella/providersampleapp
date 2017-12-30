@@ -41,5 +41,6 @@ namespace providerSampleApp
                 PatientView.ItemsSource = patientDetailList.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue.ToLower()) || x.LastName.ToLower().StartsWith(e.NewTextValue.ToLower()));
             }
         }
+        async void PatientView_ItemSelected(object sender, SelectedItemChangedEventArgs e) => await Navigation.PushAsync(new PatientDetails(e.SelectedItem));
     }
 }
